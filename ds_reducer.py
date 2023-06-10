@@ -7,22 +7,25 @@ from pymongo import MongoClient
 conn = MongoClient()
 db = conn.bank_loans
 
-bank_loans_coll = db["bank_loans_hadoop_order_by_zip"]
+bank_loans_coll = db["bank_loans_hadoop_order_by_zip1"]
 
 headers= ["ZIPCode", "ID", "Age", "Experience", "Income", "Family", "CCAvg", "Education", "Mortgage", "Personal Loan", "Securities Account", "CD Account", "Online", "CreditCard"]
 
 # input comes from STDIN (standard input)
 for i, line in enumerate(sys.stdin):
-    # split the line into words
-    #words = line.split(",")
-    row = {}
-    line = line.strip()
-    values = line.split(",")
+	# split the line into words
+	#words = line.split(",")
+	row = {}
+	line = line.strip()
+	values = line.split(",")
     for index, value in enumerate(values):
-    	header = headers[index]
-    	row[header] = value
-    print(row)
-    bank_loans_coll.insert_one(row)
+		header = headers[index]
+		if header != "CCAvg":
+			row[header] = int(value)
+		else:
+			row[header] = float(value)
+	print(row)
+	bank_loans_coll.insert_one(row)
 
 """
 # input comes from STDIN
