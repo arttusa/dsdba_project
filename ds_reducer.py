@@ -2,16 +2,27 @@
 """ds_reducer.py"""
 
 import sys
+from pymongo import MongoClient
 
-current_word = None
-current_count = 0
-word = None
+conn = MongoClient()
+db = conn.bank_loans
 
+bank_loans_coll = db["bank_loans_hadoop_order_by_zip"]
 
-for line in sys.stdin:
+headers= ["ZIPCode", "ID", "Age", "Experience", "Income", "Family", "CCAvg", "Education", "Mortgage", "Personal Loan", "Securities Account", "CD Account", "Online", "CreditCard"]
 
-	#line = line.strip()
-	print(line)
+# input comes from STDIN (standard input)
+for i, line in enumerate(sys.stdin):
+    # split the line into words
+    #words = line.split(",")
+    row = {}
+    line = line.strip()
+    values = line.split(",")
+    for index, value in enumerate(values):
+    	header = headers[index]
+    	row[header] = value
+    print(row)
+    bank_loans_coll.insert_one(row)
 
 """
 # input comes from STDIN

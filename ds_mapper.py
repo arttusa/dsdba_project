@@ -1,16 +1,19 @@
 #!/usr/bin/python3
 """ds_mapper.py"""
-
 import sys
 
+headers= ["ID", "Age", "Experience", "Income", "ZIPCode", "Family", "CCAvg", "Education", "Mortgage", "Personal Loan", "Securities Account", "CD Account", "Online", "CreditCard"]
+
 # input comes from STDIN (standard input)
-for line in sys.stdin:
+for i, line in enumerate(sys.stdin):
+    if i == 0:
+    	continue
     # remove leading and trailing whitespace
-    #line = line.strip()
-    # split the line into words
-    #words = line.split(",")
+    line = line.strip()
+    values = line.split(",")
+    zip_array = [values[4]] + values[0:4] + values[5:]
+    print(",".join([str(elem) for elem in zip_array]))
     
-    print(line)
     
     
     # increase counters
