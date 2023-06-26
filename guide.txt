@@ -1,0 +1,16 @@
+Guide for using the MapReducer:
+
+You should have Hadoop and Mongo installed in the virtual machine and turned on
+
+Make directory for the file:
+1. hadoop fs -mkdir /user
+2. hadoop fs -mkdir /user/dsbda
+
+Insert file to Hadoop HDFS
+1. hadoop fs -put data.csv /user/dsdba
+
+Run MapReducer
+1. hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.0.jar -D mapred.output.key.comparator.class=org.apache.hadoop.mapred.lib.KeyFieldBasedComparator -D  mapred.text.key.comparator.options=-n -file /home/ds/dsdba_project/ds_mapper.py -mapper ds_mapper.py -file /home/ds/dsdba_project/ds_reducer.py -reducer ds_reducer.py -input /user/dsbda/data.csv -output /user/dsbda/outputs
+
+Print the outputs:
+1. hadoop fs -cat /user/dsbda/outputs/part-00000
