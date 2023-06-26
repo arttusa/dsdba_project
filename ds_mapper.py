@@ -6,24 +6,24 @@ headers= ["ID", "Age", "Experience", "Income", "ZIPCode", "Family", "CCAvg", "Ed
 
 # input comes from STDIN (standard input)
 for i, line in enumerate(sys.stdin):
-    if i == 0:
-    	continue
-    # remove leading and trailing whitespace
-    line = line.strip()
-    values = line.split(",")
-    zip_array = [values[4]] + values[0:4] + values[5:]
-    print(",".join([str(elem) for elem in zip_array]))
+	if i == 0:
+		continue
+	# remove leading and trailing whitespace
+	line = line.strip()
+	values = line.split(",")
+	zip_array = [values[4]] + values[0:4] + values[5:]
+	print(",".join([str(elem) for elem in zip_array]))
+
     
     
-    
-    # increase counters
-    #for word in words:
-        # write the results to STDOUT (standard output);
-        # what we output here will be the input for the
-        # Reduce step, i.e. the input for reducer.py
-        #
-        # tab-delimited; the trivial word count is 1
-        #print ( '%s\t%s' % (word, 1) )
+# increase counters
+# for word in words:
+# write the results to STDOUT (standard output);
+# what we output here will be the input for the
+# Reduce step, i.e. the input for reducer.py
+#
+# tab-delimited; the trivial word count is 1
+#print ( '%s\t%s' % (word, 1) )
         
 # hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.10.0.jar -file /home/ds/dsdba_project/mapper.py -mapper mapper.py -file /home/ds/dsdba_project/reducer.py -reducer reducer.py -input /user/dsdba/data.csv -output /user/dsbda/test.txt
 
