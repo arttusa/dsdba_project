@@ -7,7 +7,7 @@ from pymongo import MongoClient
 conn = MongoClient()
 db = conn.bank_loans
 
-bank_loans_coll = db["bank_loans_hadoop_order_by_zip1"]
+bank_loans_coll = db["bank_loans_hadoop"]
 
 headers= ["ZIPCode", "ID", "Age", "Experience", "Income", "Family", "CCAvg", "Education", "Mortgage", "Personal Loan", "Securities Account", "CD Account", "Online", "CreditCard"]
 

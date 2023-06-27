@@ -2,8 +2,6 @@
 """ds_mapper.py"""
 import sys
 
-headers= ["ID", "Age", "Experience", "Income", "ZIPCode", "Family", "CCAvg", "Education", "Mortgage", "Personal Loan", "Securities Account", "CD Account", "Online", "CreditCard"]
-
 # input comes from STDIN (standard input)
 for i, line in enumerate(sys.stdin):
 	if i == 0:

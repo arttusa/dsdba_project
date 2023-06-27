@@ -14,3 +14,6 @@ Run MapReducer
 
 Print the outputs:
 1. hadoop fs -cat /user/dsbda/outputs/part-00000
+
+Prerequisites for using the proven hypothesis in the bankdata jupyter file:
+- The MapReducer must be executed to put the relevant data into the mongo database collection bank_data_hadoop
